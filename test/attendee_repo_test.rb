@@ -8,21 +8,21 @@ class AttendeeRepoTest <MiniTest::Test
     assert repo.csv.is_a? CSV
   end
 
-  def test_it_doesnt_load_a_nonexisting_file
+  def test_it_loads_file_by_default
     repo = AttendeeRepo.new(nil)
     repo.load('./test/event_attendess_test.csv')
     assert_equal 0, repo.csv.count
   end
 
-  def test_it_builds_entries
-    repo = AttendeeRepo.new(value)
+  def test_it_can_build_attendee_records
+    repo = AttendeeRepo.new(filename)
     repo.load('./test/fevent_attendess_test.csv')
-    repo.build_entries
-    assert_equal 4, repo.entries.count
+    repo.build_records
+    assert_equal 4, repo.records.count
   end
 
-  def test_it_sets_the_attributes
-    repo = AttendeeRepo.new(value)
+  def test_it_assigns_header_values
+    repo = AttendeeRepo.new(filename)
     assert_equal [:first_name], repo.attributes
   end
 
