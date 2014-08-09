@@ -1,6 +1,6 @@
 Weekend:
 Rolando: Cleaner Tests and Class
-Jess: Repo Tests and Class
+Jess: Repo Tests and Class 
 
 Monday:
 Touch base at 4pm
