@@ -16,8 +16,8 @@ class Attendee
               :zipcode
 
   def initialize(row, clean)
-    @id             = clean.id(row[:id])
-    @regdate        = clean.regdate(row[:regdate])
+    @id             = row[:id]
+    @regdate        = row[:regdate]
     @first_name     = clean.first_name(row[:first_name])
     @last_name      = clean.last_name(row[:last_name])
     @email_address  = clean.email_address(row[:email_address])
