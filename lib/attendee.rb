@@ -1,7 +1,7 @@
 class Attendee
   def self.build(row)
-    cleaner = Cleaner.new
-    new(row, cleaner)
+    clean = Clean.new
+    new(row, clean)
   end
 
   attr_reader :id,
@@ -15,17 +15,17 @@ class Attendee
               :state,
               :zipcode
 
-  def initialize(row, cleaner)
-    @id             = cleaner.id(row[:id])
-    @regdate        = cleaner.regdate(row[:regdate])
-    @first_name     = cleaner.first_name(row[:first_name])
-    @last_name      = cleaner.last_name(row[:last_name])
-    @email_address  = cleaner.email_address(row[:email_address])
-    @homephone      = cleaner.homephone(row[:homephone])
-    @street         = cleaner.street(row[:street])
-    @city           = cleaner.city(row[:city])
-    @state          = cleaner.state(row[:state])
-    @zipcode        = cleaner.zipcode(row[:zipcode])
+  def initialize(row, clean)
+    @id             = clean.id(row[:id])
+    @regdate        = clean.regdate(row[:regdate])
+    @first_name     = clean.first_name(row[:first_name])
+    @last_name      = clean.last_name(row[:last_name])
+    @email_address  = clean.email_address(row[:email_address])
+    @homephone      = clean.homephone(row[:homephone])
+    @street         = clean.street(row[:street])
+    @city           = clean.city(row[:city])
+    @state          = clean.state(row[:state])
+    @zipcode        = clean.zipcode(row[:zipcode])
   end
 
 
