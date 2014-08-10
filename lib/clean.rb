@@ -1,7 +1,19 @@
 class Clean
 
 	def first_name(first_name)
-		first_name.downcase
+		if first_name.empty?
+			"No Name"
+		else	
+		  first_name.downcase
+		end  
+	end
+
+  def last_name(last_name)
+		if last_name.empty?
+			"No Name"
+		else	
+		  last_name.downcase
+		end  
 	end
 
   def zipcode(zipcode)
@@ -9,8 +21,8 @@ class Clean
   end
 
   def homephone(phone_number)
-    
     digits = remove_non_digit_characters(phone_number)
+	  
 	  if digits.length == 10
 	     digits
 	  elsif digits.length < 10 || digits.length > 11
@@ -20,11 +32,43 @@ class Clean
     end
   end
 
+  def email_address(email_address)
+  	if email_address =~ /^[^@]+@[^@]+\.[^@]+$/
+  		email_address    	
+  	else
+  	  "Bad Email"
+  	end  	
+  end
+
   def remove_non_digit_characters(string)
     if string =~ /[^0-9]/
 	     string = string.gsub(/[^0-9]/,"")
 	  end
 	  string
+  end
+
+  def street(street)
+  	if street.empty?
+  		"No Street"
+  	else
+  	  street
+  	end  	
+  end
+
+  def city(city)
+  	if city.empty?
+  		"No City"
+  	else
+  	  city
+  	end  	
+  end
+
+  def state(state)
+  	if state.length == 2
+  	  state.upcase
+  	else
+  	  "Bad State"
+  	end    
   end
 end 
  
