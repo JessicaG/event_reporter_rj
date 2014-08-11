@@ -21,5 +21,10 @@ class AttendeeRepo
     csv.each { |row| @records << Attendee.build(row) }
     records
   end
-
 end
+
+
+repo = AttendeeRepo.new
+
+repo.build_records
+
