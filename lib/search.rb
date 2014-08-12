@@ -4,8 +4,8 @@ require_relative 'clean'
 class Search
 	attr_reader :repo, :attendees, :clean
 
-	def initialize(filename="./data/event_attendees_test.csv")
-		@repo = AttendeeRepo.new(filename).build_records
+	def initialize(queue)
+		@repo = queue
 		@clean = Clean.new
 	end
 

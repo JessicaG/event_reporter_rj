@@ -5,6 +5,7 @@ class AttendeeRepo
   attr_reader :csv, :records
 
   def initialize(filename="./data/event_attendees_test.csv")
+    puts "Hi"
     @records = []
     @csv     = CSV.open(filename, headers: true, header_converters: :symbol)
   end
