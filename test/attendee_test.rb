@@ -1,6 +1,6 @@
 require_relative 'test_helper'
 
-class Attendee <MiniTest::Test
+class AttendeeTest <MiniTest::Test
 
   def row
     { _: "1",
@@ -28,5 +28,5 @@ class Attendee <MiniTest::Test
     assert row[:state], attendee.state
     assert row[:zipcode], attendee.zipcode
   end
-  
+
 end

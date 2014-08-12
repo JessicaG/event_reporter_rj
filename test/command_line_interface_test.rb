@@ -1,6 +1,6 @@
 require_relative 'test_helper'
 
-class CommandLineInterface < MiniTest::Test
+class CommandLineInterfaceTest < MiniTest::Test
 
   def test_it_can_load_a_file
   end
