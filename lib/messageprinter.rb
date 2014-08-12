@@ -5,6 +5,6 @@ class MessagePrinter
   end
 
   def command_request
-  	prints "Please enter a command:"
+  	print "Please enter a command:"
   end
 end	

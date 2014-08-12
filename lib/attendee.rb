@@ -1,4 +1,7 @@
+require_relative 'clean'
+
 class Attendee
+  
   def self.build(row)
     clean = Clean.new
     new(row, clean)
@@ -16,8 +19,8 @@ class Attendee
               :zipcode
 
   def initialize(row, clean)
-    @id             = row[:id]
-    @regdate        = row[:regdate]
+    @id             = clean.id(row[:id])
+    @regdate        = clean.regdate(row[:regdate])
     @first_name     = clean.first_name(row[:first_name])
     @last_name      = clean.last_name(row[:last_name])
     @email_address  = clean.email_address(row[:email_address])
@@ -27,6 +30,4 @@ class Attendee
     @state          = clean.state(row[:state])
     @zipcode        = clean.zipcode(row[:zipcode])
   end
-
-
 end

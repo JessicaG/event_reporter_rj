@@ -8,6 +8,16 @@ class CleanTest <MiniTest::Test
 		@clean = Clean.new
 	end
 
+  def test_turns_id_into_integer
+    id = "1"
+    assert_equal 1, clean.id(id)
+  end
+
+  def test_does_nothing_for_regdate
+    regdate = "11/12/08 10:47"
+    assert_equal "11/12/08 10:47", clean.regdate(regdate)
+  end
+
 	def test_if_zipcode_is_nil_returns_five_zeros
 		zip_code = ""
     assert_equal "00000", clean.zipcode(zip_code)

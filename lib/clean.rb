@@ -1,5 +1,13 @@
 class Clean
 
+  def id(id)
+    id.to_i
+  end
+
+  def regdate(regdate)
+    regdate
+  end
+
 	def first_name(first_name)
 		if first_name.empty?
 			"No Name"
