@@ -10,7 +10,7 @@ class AttendeeRepo
     @csv     = CSV.open(filename, headers: true, header_converters: :symbol)
   end
 
-  #let's use .map on this, review Monday after Enumerables lesson
+  # let's use .map on this, review Monday after Enumerables lesson
   # def load(filename)
   #   if File.file?(filename)
   #     @csv     = CSV.open(filename, headers: true, header_converters: :symbol)

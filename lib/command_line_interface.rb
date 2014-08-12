@@ -32,8 +32,8 @@ class CommandLineInterface
 		case command
 		when "help"  then user_command.help(parameters)
 		when "load"  then user_command.load_file(parameters)
-		# when "queue" then
-		when "find"  then	find(parameters[0], parameters[-1])
+		when "queue" then user_command.queue(parameters)
+		when "find"  then	user_command.find(parameters[0], parameters[-1])
 		when "quit"  then quit_program
 		else
 			puts messages.invalid_command_message
