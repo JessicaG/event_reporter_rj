@@ -2,46 +2,48 @@ require 'colorize'
 require_relative 'messageprinter'
 
 class CommandLineInterface
-	attr_reader :messages,
-							:command,
+	include MessagePrinter
+	
+	attr_reader	:user_command,
 							:search,
 							:parameters,
-							:queue  # => nil
+							:queue
 
-	def initialize()
-		@messages = MessagePrinter.new
-		@command 	= UserCommand.new
-		@queue 		= []
+	def initialize
+		@user_command = UserCommand.new
+		@queue 		    = []
 	end
 
 	def run
 		system 'clear'
-    messages.intro
+    MessagePrinter.intro_message
 		command = ''
 		until command == 'quit'
-			messages.initial_prompt
+			MessagePrinter.initial_prompt
 			parts  			= gets.strip.split
 			command 		= parts[0]
-			@parameters = parts[1..-1]
+			@parameters = parts[1..-1].empty? ? nil : parts[1..-1] 
 			process_commands(command, parameters)
 		end
 	end
 
-	def process_commands(command, parameters=nil)
+	def process_commands(command,parameters)
+		puts parameters
 		case command
 		when "help"  then user_command.help(parameters)
-		when "load"  then user_command.load_file(parameters)
+		when "load"  then user_command.load(parameters)
 		when "queue" then user_command.queue(parameters)
 		when "find"  then	user_command.find(parameters[0], parameters[-1])
 		when "quit"  then quit_program
 		else
-			puts messages.invalid_command_message
+		 MessagePrinter.invalid_command_message
 		end
-		messages.outro_message
+		MessagePrinter.outro_message
 	end
 
 	def quit_program
 		exit
 	end
-
 end
+
+

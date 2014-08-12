@@ -1,5 +1,7 @@
+require 'terminal-table'
+
 class Queue
-  attr_reader :attendees
+  attr_accessor :attendees
 
   def initialize
     @attendees = []
@@ -14,6 +16,12 @@ class Queue
   end
 
   def print
-    #print
+    table = Terminal::Table.new :rows => rows
+
+    attendees
+  end
+
+  def count
+    attendees.count
   end
 end

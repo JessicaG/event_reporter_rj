@@ -1,18 +1,20 @@
-#require 'terminal-table'
+require 'terminal-table'
 require_relative 'search'
 require 'pry'
 
 class UserCommand
-  attr_reader :messages, :search, :queue
+  include MessagePrinter
 
-  def initialize(attendees)
-    @messages = MessagePrinter.new
-    @search   = Search.new(attendees)
-    @queue    = Queue.new
+  attr_reader :search
+  attr_accessor :complete_list, :search_results
+
+  def initialize
+    @complete_list  = []
+    @search_results = Queue.new
   end
 
   def find(kind, query)
-    search.send(kind.to_sym, query)
+     search_results.attendees << Search.new(complete_list).send(kind.to_sym, query)
   end
 
   def help(sub_command)
@@ -22,6 +24,14 @@ class UserCommand
       when 'queue' then queue_help(sub_command)
       end
     end
+  end
+
+  def load(file_path="./data/event_attendees_test.csv")
+    if !file_path
+      file_path = "./data/event_attendees_test.csv"
+    end  
+      complete_list = AttendeeRepo.load(file_path)
+
   end
 
   def queue_help(sub_command)
@@ -36,13 +46,14 @@ class UserCommand
   def queue(sub_command)
     case sub_command[0]
     when "count"
-      queue.count
+      MessagePrinter.queue_results_message_count(search_results.count)
     when "clear"
-      queue.clear
+      search_results.clear
+      MessagePrinter.clear_queue_successful_message
     when "print"
-      queue.print
+      search_results.print
     when "save"
-      queue.save
+      search_results.save
     end
   end
 

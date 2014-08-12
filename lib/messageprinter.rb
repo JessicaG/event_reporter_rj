@@ -1,6 +1,6 @@
 require 'colorize'
 
-class MessagePrinter
+module MessagePrinter
 
   def self.initial_prompt
     puts  "\n"

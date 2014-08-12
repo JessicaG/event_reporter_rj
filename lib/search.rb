@@ -4,8 +4,8 @@ require_relative 'clean'
 class Search
 	attr_reader :repo, :attendees, :clean
 
-	def initialize(queue)
-		@repo = queue
+	def initialize(attendees)
+		@repo = attendees
 		@clean = Clean.new
 	end
 
