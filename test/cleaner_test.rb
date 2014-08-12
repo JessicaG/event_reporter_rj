@@ -60,7 +60,7 @@ class CleanTest <MiniTest::Test
 
   def test_if_a_empty_first_name_returns_no_name
     first_name = ""
-    assert_equal "No Name", clean.first_name(first_name)
+    assert_equal "", clean.first_name(first_name)
   end
 
   def test_if_a_name_with_uppercase_letters_gets_downcased
@@ -70,7 +70,7 @@ class CleanTest <MiniTest::Test
 
   def test_if_a_empty_last_name_returns_no_name
     last_name = ""
-    assert_equal "No Name", clean.last_name(last_name)
+    assert_equal "", clean.last_name(last_name)
   end
 
   def test_if_a_name_with_uppercase_letters_gets_downcased
@@ -90,7 +90,7 @@ class CleanTest <MiniTest::Test
 
   def test_if_street_is_empty_returns_no_street
     street = ""
-    assert_equal "No Street", clean.street(street)
+    assert_equal "", clean.street(street)
   end
 
   def test_if_state_length_isnt_two_return_bad_state

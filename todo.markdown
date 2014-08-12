@@ -10,6 +10,11 @@ Tuesday:
 Afternoon work time and check-in with instructor,
 should have a functioning CLI with one-two commands working.
 Evening: Staying late and finishing majority of commands
+Clean up attendee repo test.
+Write tests for queue class
+Write methods for queue class.
+Cleaning up user commands and cli.
+
 
 Wednesday:
 Morning work time, finishing commands, debugging and edge cases

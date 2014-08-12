@@ -22,8 +22,8 @@ class AttendeeRepoTest <MiniTest::Test
   end
 
   def test_it_assigns_header_values
-    repo = AttendeeRepo.new(filename)
-    assert_equal [:first_name], repo.attributes
+    attendees = AttendeeRepo.load
+    assert_equal [:first_name], attendees.first
   end
 
 

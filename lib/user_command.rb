@@ -1,4 +1,4 @@
-require 'terminal-table'
+#require 'terminal-table'
 require_relative 'search'
 require 'pry'
 

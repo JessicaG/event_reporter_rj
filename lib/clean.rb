@@ -10,7 +10,7 @@ class Clean
 
 	def first_name(first_name)
 		if first_name.nil?
-			"No Name"
+			""
 		else
 		  first_name.downcase
 		end
@@ -18,7 +18,7 @@ class Clean
 
   def last_name(last_name)
 		if last_name.nil?
-			"No Name"
+			""
 		else
 		  last_name.downcase
 		end
@@ -58,7 +58,7 @@ class Clean
 
   def street(street)
   	if street.nil?
-  		"No Street"
+  		""
   	else
   	  street
   	end
