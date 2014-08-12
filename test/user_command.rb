@@ -1,6 +1,6 @@
 require_relative 'test_helper'
 
-class UserCommand < MiniTest::Test
+class UserCommandTest < MiniTest::Test
 
  def data
   @data ||=
