@@ -1,10 +1,10 @@
 Weekend:
-Rolando: Cleaner Tests and Class
-Jess: Repo Tests and Class 
+Rolando: Cleaner Tests and Class :Done
+Jess: Repo Tests and Class :Done
 
 Monday:
-Touch base at 4pm
-User Commands should be started at this point
+Touch base at 4pm :Done
+User Commands should be started at this point :Done
 
 Tuesday:
 Afternoon work time and check-in with instructor,
