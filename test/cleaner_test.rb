@@ -1,5 +1,5 @@
 require_relative 'test_helper'
-require_relative '../lib/clean'
+
 
 class CleanTest <MiniTest::Test
 	attr_reader :clean
@@ -27,7 +27,7 @@ class CleanTest <MiniTest::Test
 		zip_code   = "345"
 		assert_equal "00345", clean.zipcode(zip_code)
 	end
-  
+
   def test_if_zip_code_is_more_than_five_digits_only_registers_first_five
   	zip_code   = "902700"
   	assert_equal "90270", clean.zipcode(zip_code)
@@ -55,7 +55,7 @@ class CleanTest <MiniTest::Test
 
   def test_if_phone_number_has_eleven_digits_and_begins_with_1_it_removes_the_1_and_returns_the_rest
     phone_number = "13237351802"
-    assert_equal "3237351802", clean.homephone(phone_number)	
+    assert_equal "3237351802", clean.homephone(phone_number)
   end
 
   def test_if_a_empty_first_name_returns_no_name
@@ -76,7 +76,7 @@ class CleanTest <MiniTest::Test
   def test_if_a_name_with_uppercase_letters_gets_downcased
     last_name = "RIcHARdSOn"
     assert_equal = "richardson", clean.last_name(last_name)
-  end  
+  end
 
   def test_if_an_email_address_is_valid_it_returns_the_email_address
     email = "robert@gmail.com"
@@ -86,7 +86,7 @@ class CleanTest <MiniTest::Test
   def test_if_an_email_address_is_invalid_it_returns_bad_email
     email = "@rdfd.com"
     assert_equal "Bad Email",  clean.email_address(email)
-  end 
+  end
 
   def test_if_street_is_empty_returns_no_street
     street = ""
