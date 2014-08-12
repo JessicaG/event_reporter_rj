@@ -19,10 +19,10 @@ class CommandLineInterface
 		system 'clear'
     messages.intro
 		command = ''
-		until command == "quit"
+		until command == 'quit'
 			messages.initial_prompt
-			parts  = gets.strip.split
-			command = parts[0]
+			parts  			= gets.strip.split
+			command 		= parts[0]
 			@parameters = parts[1..-1]
 			process_commands(command, parameters)
 		end
@@ -30,9 +30,9 @@ class CommandLineInterface
 
 	def process_commands(command, parameters=nil)
 		case command
-		when "help"  then
-		when "load"  then load(parameters)
-		when "queue" then
+		when "help"  then user_command.help(parameters)
+		when "load"  then user_command.load_file(parameters)
+		# when "queue" then
 		when "find"  then	find(parameters[0], parameters[-1])
 		when "quit"  then quit_program
 		else
