@@ -1,19 +1,18 @@
 require 'terminal-table'
+require_relative 'search'
+require 'pry'
 
 class UserCommand
+  attr_reader :messages, :search, :queue
 
-  def initialize
+  def initialize(attendees)
     @messages = MessagePrinter.new
-  end
-
-  def load_file(filename="./data/event_attendees_test.csv")
-    repo = AttendeeRepo.new(filename).build_records
-    #@queue = Search.new(repo)
+    @search   = Search.new(attendees)
+    @queue    = Queue.new
   end
 
   def find(kind, query)
-    results = search.send(kind.to_sym, query)
-    results.each { |person| puts "#{person.first_name} #{person.last_name} #{person.city}"}
+    search.send(kind.to_sym, query)
   end
 
   def help(sub_command)
@@ -27,15 +26,24 @@ class UserCommand
 
   def queue_help(sub_command)
     case sub_command[1]
-      when 'count' then messages.help_queue_count_message
-      when 'clear' then messages.help_queue_clear_message
-      when 'print' then messages.help_queue_print_message
-      when 'save' then messages.help_queue_save_to_message
+    when 'count' then messages.help_queue_count_message
+    when 'clear' then messages.help_queue_clear_message
+    when 'print' then messages.help_queue_print_message
+    when 'save'  then messages.help_queue_save_to_message
     end
   end
 
   def queue(sub_command)
-
+    case sub_command[0]
+    when "count"
+      queue.count
+    when "clear"
+      queue.clear
+    when "print"
+      queue.print
+    when "save"
+      queue.save
+    end
   end
 
   def queue_save_by(filename)
@@ -59,6 +67,7 @@ class UserCommand
   end
 
   private
+
   def create_filename(filename)
     "output/#{filename}.csv"
   end

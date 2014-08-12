@@ -1,7 +1,7 @@
 require_relative 'clean'
 
 class Attendee
-  
+
   def self.build(row)
     clean = Clean.new
     new(row, clean)
@@ -30,4 +30,5 @@ class Attendee
     @state          = clean.state(row[:state])
     @zipcode        = clean.zipcode(row[:zipcode])
   end
+  
 end

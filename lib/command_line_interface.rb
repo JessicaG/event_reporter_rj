@@ -11,7 +11,6 @@ class CommandLineInterface
 	def initialize()
 		@messages = MessagePrinter.new
 		@command 	= UserCommand.new
-		@command 	= ""
 		@queue 		= []
 	end
 
