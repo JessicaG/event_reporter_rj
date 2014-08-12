@@ -17,34 +17,50 @@ class UserCommand < MiniTest::Test
   end
 
   def test_it_can_count_attendees
-    skip
     command = UserCommand.new
     command.load(data)
     assert_equal 4, command.count
   end
 
   def test_it_can_clear_the_queue
-    skip
-    que = UserCommand.new
-    que.load(data)
+    queue = UserCommand.new
+    queue.load(data)
     assert [], que.clear
   end
 
-  def test_it_can_add_to_current_queue
-    skip
-    command = UserCommand.new
-    command.load(data)
-    assert_equal 4, command.count
-    que.add([1, 2])
-    assert_equal 6, command.count
+  def test_it_can_find_by_first_name
+    repo = Attedee.new('./event_attendees_test.csv').build_records
+    queue = UserCommand.new
+    queue.find(:first_name, 'Allison')
+    assert_equal ['Allison'], queue.results.to_s("Allison")
   end
 
-  def test_it_can_replace_current_queue
-    skip
-    command = UserCommand.new
-    command.load([1, 2, 3, 4, 5, 6])
-    command.subtract([1, 2])
-    assert_equal [3, 4, 5, 6], command.data
+  def test_it_can_find_by_last_name
+    repo = Attedee.new('./event_attendees_test.csv').build_records
+    queue = UserCommand.new
+    queue.find(:last_name, 'Nguyen')
+    assert_equal ['Nguyen'], queue.results.to_s("Nguyen")
+  end
+
+  def test_it_can_find_by_city
+    repo = Attedee.new('./event_attendees_test.csv').build_records
+    queue = UserCommand.new
+    queue.find(:city, 'Washington')
+    assert_equal ['Washington'], queue.results.to_s("Washington")
+  end
+
+  def test_it_can_find_by_state
+    repo = Attedee.new('./event_attendees_test.csv').build_records
+    queue = UserCommand.new
+    queue.find(:state, 'DC')
+    assert_equal ['DC'], queue.results.to_s("DC")
+  end
+
+  def test_it_can_find_by_zip_code
+    repo = Attedee.new('./event_attendees_test.csv').build_records
+    queue = UserCommand.new
+    queue.find(:zip_code, '20010')
+    assert_equal ['20010'], queue.results.to_s("20010")
   end
 
 end
