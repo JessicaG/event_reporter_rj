@@ -13,7 +13,7 @@ attr_accessor :attendees
 	def first_name(name)
 		print attendees
 		name = name.downcase
-			attendees.keep_if {|attendee| attendee.first_name.downcase == name }
+		attendees.keep_if {|attendee| attendee.first_name.downcase == name }
 	end
 
 	def last_name(name)
