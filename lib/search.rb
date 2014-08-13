@@ -2,16 +2,18 @@ require_relative 'attendee_repo'
 require_relative 'clean'
 
 class Search
-	attr_reader :repo, :attendees, :clean
+attr_reader :clean
+attr_accessor :attendees
 
 	def initialize(attendees)
-		@repo = attendees
+		@attendees = attendees
 		@clean = Clean.new
 	end
 
 	def first_name(name)
+		print attendees
 		name = name.downcase
-		repo.select {|attendee| attendee.first_name.downcase == name }
+			attendees.keep_if {|attendee| attendee.first_name.downcase == name }
 	end
 
 	def last_name(name)
@@ -20,8 +22,12 @@ class Search
 	end
 
 	def zipcode(zipcode)
+		puts "Hello"
 		clean.zipcode(zipcode)
-		repo.select {|attendee| attendee.zipcode == zipcode }
+		puts zipcode
+		attendees = attendees.collect {|attendee| attendee.zipcode == zipcode }
+		puts attendees
+		puts "end"
 	end
 
 	def email(email)

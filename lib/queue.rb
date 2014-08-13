@@ -1,6 +1,8 @@
 require 'terminal-table'
+require_relative 'attendee'
 
 class Queue
+  include MessagePrinter 
   attr_accessor :attendees
 
   def initialize
@@ -23,12 +25,29 @@ class Queue
   # end
 
   def print
-    if @queue.empty?
+    if @attendees.empty?
         puts MessagePrinter.print_error_message
     else
+      #@attendees.each { |attendee| puts attendee.id  }
+
       rows = []
-      @search_results.to_row
-    table = Terminal::Table.new :title => "Queue Results", :headings => ['ID', 'RegDate', 'First Name', 'Last Name', 'Email Address', 'Home Phone', 'Street', 'City', 'State', 'Zip Code'], :rows => rows
+      @attendees.each do |a|
+        rows << [
+          "#{a.id}",
+          "#{a.regdate}",
+          "#{a.first_name}",
+          "#{a.last_name}",
+          "#{a.email_address}",
+          "#{a.homephone}",
+          "#{a.street}",
+          "#{a.city}",
+          "#{a.state}",
+          "#{a.zipcode}"
+        ]
+      end
+      table = Terminal::Table.new :title => "Queue Results", :headings => ['ID', 'RegDate', 'First Name', 'Last Name', 'Email Address', 'Home Phone', 'Street', 'City', 'State', 'Zip Code'], :rows => rows
+      puts table
+    end
   end
 
   def queue_print_by_attribute(attribute)

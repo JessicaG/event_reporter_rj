@@ -84,3 +84,4 @@ module MessagePrinter
   end
 
 end
+end

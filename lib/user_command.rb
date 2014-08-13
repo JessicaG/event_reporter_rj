@@ -1,6 +1,4 @@
 require 'terminal-table'
-require_relative 'search'
-require 'pry'
 
 class UserCommand
   include MessagePrinter
@@ -14,7 +12,9 @@ class UserCommand
   end
 
   def find(kind, query)
-     search_results.attendees << Search.new(complete_list).send(kind.to_sym, query)
+    puts "#{kind} #{query}" 
+    puts "Hello from inside find method"  
+    search_results.attendees = Search.new(@complete_list).send(kind.to_sym, query)
   end
 
   def help(sub_command)
@@ -30,7 +30,9 @@ class UserCommand
     if !file_path
       file_path = "./data/event_attendees_test.csv"
     end
-      complete_list = AttendeeRepo.load(file_path)
+      @complete_list = AttendeeRepo.load(file_path)
+      puts complete_list
+      puts "Hello"
   end
 
   def queue_save_by(filename)
