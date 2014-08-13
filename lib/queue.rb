@@ -1,7 +1,6 @@
 require 'terminal-table'
 
 class Queue
-  include MessagePrinter
   attr_accessor :attendees
 
   def initialize
@@ -25,7 +24,6 @@ class Queue
   end
 
   def print_queue
-    p "gorilla"
     if @attendees.empty?
       puts MessagePrinter.print_error_message
     else

@@ -2,7 +2,6 @@ require 'terminal-table'
 require 'pry'
 
 class UserCommand
-  include MessagePrinter
 
   attr_reader :search, :complete_list, :queue
 
@@ -18,10 +17,9 @@ class UserCommand
   end
 
   def load(file_path)
-    file_path = "./data/event_attendees_test.csv" if file_path.nil?
+    file_path = "./data/event_attendees.csv" if file_path.nil?
 
     @complete_list = AttendeeRepo.load(file_path)
-    puts complete_list
   end
 
 end

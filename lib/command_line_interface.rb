@@ -2,12 +2,12 @@ require 'colorize'                 # => true
 require_relative 'message_printer'
 
 class CommandLineInterface
-	include MessagePrinter     # => CommandLineInterface
+	include MessagePrinter
 
-	attr_reader	:user_command,  # => :user_command
-							:search,              # => :search
-							:parameters,          # => :parameters
-							:queue              # => :queue
+	attr_reader	:user_command,
+							:search,
+							:parameters,
+							:queue         
 
 	def initialize
 		@user_command = UserCommand.new
@@ -40,10 +40,10 @@ class CommandLineInterface
 	end
 
   def help(sub_command)
-      case sub_command[0]
-      when nil then MessagePrinter.help_options
-      when 'find'  then MessagePrinter.help_find
-      when 'queue' then queue_help(sub_command)
+    return MessagePrinter.help_options if sub_command.nil?
+    case sub_command[0]
+		when 'find'  then MessagePrinter.help_find
+    when 'queue' then queue_help(sub_command)
     end
   end
 
