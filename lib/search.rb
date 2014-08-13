@@ -11,13 +11,14 @@ attr_accessor :attendees
 	end
 
 	def first_name(name)
+		#print attendees
 		name = name.downcase
 		attendees.keep_if {|attendee| attendee.first_name.downcase == name }
 	end
 
 	def last_name(name)
 		name = name.downcase
-		attendees.select {|attendee| attendee.last_name.downcase == name }
+		repo.select {|attendee| attendee.last_name.downcase == name }
 	end
 
 	def zipcode(zipcode)

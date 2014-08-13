@@ -53,8 +53,8 @@ class CommandLineInterface
 		when "count"
 			MessagePrinter.queue_results_message_count(user_command.search_results.attendees.count)
 		when "clear"
+			search_results.clear
 			MessagePrinter.clear_queue_successful_message
-			user_command.
 		when "print"
 			user_command.search_results.print
 		when "save"
