@@ -65,11 +65,15 @@ class CommandLineInterface
 			MessagePrinter.clear_queue_successful
 		when "print"
       case sub_command[1]
-        when "by" then user_command.queue.print_by(sub_command[2])
+      when "by" then user_command.queue.print_by(sub_command[2])
+			else
+				user_command.queue.print_queue
       end
-		  user_command.queue.print
 		when "save"
-			search_results.save
+			case sub_command[1]
+      when 'to'
+				user_command.queue.save(sub_command[2])
+			end
 		end
 	end
 

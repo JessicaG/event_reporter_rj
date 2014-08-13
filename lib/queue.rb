@@ -8,22 +8,30 @@ class Queue
     @attendees = []
   end
 
+  ###
+  def add_to_attendees(results)
+    results.each do |attendee|
+      attendees << attendee
+    end
+  end
+
+  ###
   def clear
     attendees.clear
   end
 
   def count
-    attendees.flatten.count
+    attendees.count
   end
 
-  def print(attendees=attendees)
+  def print_queue
+    p "gorilla"
     if @attendees.empty?
       puts MessagePrinter.print_error_message
     else
-      attendee_array = attendees.flatten
-      rows = []
-      attendee_array.each do |a|
-        rows << [
+      # attendee_array = attendees.flatten
+      rows = attendees.collect do |a|
+         [
           "#{a.id}",
           "#{a.regdate}",
           "#{a.first_name}",
@@ -42,11 +50,10 @@ class Queue
   end
 
   def print_by(attribute)
-    flat = attendees.flatten
-    results = flat.sort_by! do |record|
+    attendees.sort_by! do |record|
       record.send(attribute)
     end
-    print(results)
+    print_queue
   end
 
   def save(filename)
@@ -68,4 +75,11 @@ class Queue
       end
     end
   end
+
+  private
+
+  def create_filename(filename)
+    "output/#{filename}.csv"
+  end
+
 end
