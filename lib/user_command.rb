@@ -5,7 +5,7 @@ require 'pry'
 class UserCommand
   include MessagePrinter
 
-  attr_reader :search
+  attr_reader   :search
   attr_accessor :complete_list, :search_results
 
   def initialize
@@ -29,7 +29,7 @@ class UserCommand
   def load(file_path="./data/event_attendees_test.csv")
     if !file_path
       file_path = "./data/event_attendees_test.csv"
-    end  
+    end
       complete_list = AttendeeRepo.load(file_path)
 
   end
