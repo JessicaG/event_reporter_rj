@@ -31,7 +31,6 @@ class UserCommand
       file_path = "./data/event_attendees_test.csv"
     end
       complete_list = AttendeeRepo.load(file_path)
-
   end
 
   def queue_save_by(filename)

@@ -34,6 +34,10 @@ module MessagePrinter
     puts "I'm sorry, I cannot help you. Please try again.".colorize(:red)
   end
 
+  def self.print_error_message
+    puts "Sorry, your queue is empty.  Try (find by)"
+  end
+
   def self.save_queue_to_csv_successful
     puts "You have successfully saved your current queue to a CSV in your output file.\n
           You can start another by starting a new search or clearing your queue.".colorize(:green)
