@@ -2,6 +2,10 @@ require_relative 'test_helper'
 
 class AttendeeTest <MiniTest::Test
 
+  def setup
+    attendee = Attendee.build(row)
+  end
+
   def row
     { _: "1",
       regdate: "11/12/08 10:47",

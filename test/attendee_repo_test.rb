@@ -2,27 +2,29 @@ require_relative 'test_helper'
 
 class AttendeeRepoTest <MiniTest::Test
 
-  # def test_it_can_create_a_csv
-  #   attendees = AttendeeRepo.load
-  #   assert attendees.csv.is_a? CSV
-  # end
-
-  def test_it_loads_file_by_default
+  def test_it_loads_event_attendees_file_by_default_when_using_self_method_load
     records = AttendeeRepo.load
+    assert_equal 5175, records.count
+  end
+
+  def test_it_can_load_a_different_file
+    file_path = "./data/event_attendees_test.csv"
+    records = AttendeeRepo.load(file_path)
     assert_equal 20, records.count
   end
 
-  # def test_it_can_build_attendee_records
-  #   attendees = AttendeeRepo.load
-  #   results   = UserCommand.new(attendees)
-  #   assert_equal 20, attendees.results.count
-  # end
-  #
-  # def test_it_assigns_header_values
-  #   skip
-  #   attendees = AttendeeRepo.load
-  #   assert_equal [:first_name], attendees.records
-  # end
+  def test_load_attendee_repo_creates_an_array
+    attendees = AttendeeRepo.load
+    assert_instance_of Array, attendees
+  end
 
+  def test_it_creates_an_instance_of_csv_file
+    attendees = AttendeeRepo.new  
+    assert_instance_of CSV, attendees.csv
+  end
 
+  def test_it_creates_an_empty_records_array_at_initialize
+    attendees = AttendeeRepo.new  
+    assert_empty attendees.records, attendees
+  end
 end
