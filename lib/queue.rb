@@ -1,5 +1,4 @@
 require 'terminal-table'
-require_relative 'attendee'
 
 class Queue
   include MessagePrinter
@@ -19,10 +18,11 @@ class Queue
 
   def print
     if @attendees.empty?
-        puts MessagePrinter.print_error_message
+      puts MessagePrinter.print_error_message
     else
-      rows = []
-      @attendees.each do |a|
+      flat_att = attendees.flatten
+      rows = []; binding.pry
+      flat_att.each do |a|
         rows << [
           "#{a.id}",
           "#{a.regdate}",
@@ -67,7 +67,4 @@ class Queue
       end
     end
   end
-
-
-
 end

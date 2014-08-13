@@ -1,5 +1,5 @@
 require 'colorize'                 # => true
-require_relative 'messageprinter'  # => true
+require_relative 'message_printer'
 
 class CommandLineInterface
 	include MessagePrinter     # => CommandLineInterface
@@ -24,6 +24,7 @@ class CommandLineInterface
 			@parameters = parts[1..-1].empty? ? nil : parts[1..-1]
 			process_commands(command, parameters)
 		end
+    MessagePrinter.outro
 	end
 
 	def process_commands(command, parameters)
@@ -34,9 +35,8 @@ class CommandLineInterface
 		when "find"  then	user_command.find(parameters[0], parameters[-1])
 		when "quit"  then quit_program
 		else
-		 MessagePrinter.invalid_command
+		  MessagePrinter.invalid_command
 		end
-		MessagePrinter.outro
 	end
 
 	def queue_help(sub_command)
@@ -49,7 +49,7 @@ class CommandLineInterface
 	end
 
 	def queue(sub_command)
-		case sub_command[0]
+		case sub_command[0]	
 		when "count"
 			MessagePrinter.queue_results_message_count(user_command.search_results.attendees.count)
 		when "clear"

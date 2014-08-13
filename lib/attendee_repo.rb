@@ -1,5 +1,4 @@
 require 'csv'
-require_relative 'attendee'
 
 class AttendeeRepo
   attr_reader :csv, :records
@@ -17,7 +16,3 @@ class AttendeeRepo
     @records = csv.collect { |row| Attendee.build(row) }
   end
 end
-
-
-# repo = AttendeeRepo.new
-# puts repo.build_records
