@@ -34,29 +34,6 @@ class UserCommand
 
   end
 
-  def queue_help(sub_command)
-    case sub_command[1]
-    when 'count' then messages.help_queue_count_message
-    when 'clear' then messages.help_queue_clear_message
-    when 'print' then messages.help_queue_print_message
-    when 'save'  then messages.help_queue_save_to_message
-    end
-  end
-
-  def queue(sub_command)
-    case sub_command[0]
-    when "count"
-      MessagePrinter.queue_results_message_count(search_results.count)
-    when "clear"
-      search_results.clear
-      MessagePrinter.clear_queue_successful_message
-    when "print"
-      puts search_results.print
-    when "save"
-      search_results.save
-    end
-  end
-
   def queue_save_by(filename)
     CSV.open(create_filename(filename), 'w') do |csv|
     csv << ['ID', 'RegDate', 'First Name', 'Last Name', 'Email Address', 'Home Phone', 'Street', 'City', 'State', 'Zip Code']
