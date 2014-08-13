@@ -16,7 +16,7 @@ class Queue
     attendees.flatten.count
   end
 
-  def print
+  def print(attendees=attendees)
     if @attendees.empty?
       puts MessagePrinter.print_error_message
     else
@@ -42,10 +42,11 @@ class Queue
   end
 
   def print_by(attribute)
-    attendees.sort_by! do |attendee|
-      attendee.send(attribute)
+    flat = attendees.flatten
+    results = flat.sort_by! do |record|
+      record.send(attribute)
     end
-    queue_print
+    print(results)
   end
 
   def save(filename)

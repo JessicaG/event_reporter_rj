@@ -32,7 +32,7 @@ class CommandLineInterface
 		when "help"  then help(parameters)
 		when "load"  then user_command.load(parameters)
 		when "queue" then queue(parameters)
-		when "find"  then	user_command.find(parameters[0], parameters[-1])
+		when "find"  then	user_command.find(parameters[0], parameters[1..-1].join(' '))
 		when "quit"  then quit_program
 		else
 		  MessagePrinter.invalid_command
@@ -57,7 +57,7 @@ class CommandLineInterface
 	end
 
 	def queue(sub_command)
-		case sub_command[0]	
+		case sub_command[0]
 		when "count"
 			MessagePrinter.queue_results_message_count(user_command.queue.count)
 		when "clear"

@@ -42,6 +42,7 @@ class Clean
 
   def email_address(email_address)
   	if email_address =~ /^[^@]+@[^@]+\.[^@]+$/
+      # /^[\w\.-]+[@][\w-]+[\.][a-z]{2,4}$/
   		email_address
   	else
   	  "Bad Email"
