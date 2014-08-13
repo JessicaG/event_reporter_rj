@@ -14,7 +14,7 @@ class UserCommand
   def find(kind, query)
     puts "#{kind} #{query}" 
     puts "Hello from inside find method"  
-    search_results.attendees = Search.new(@complete_list).send(kind.to_sym, query)
+    @search_results.attendees = Search.new(complete_list).send(kind.to_sym, query)
   end
 
   def help(sub_command)
@@ -27,19 +27,18 @@ class UserCommand
   end
 
   def load(file_path="./data/event_attendees_test.csv")
-    if !file_path
-      file_path = "./data/event_attendees_test.csv"
-    end
-      @complete_list = AttendeeRepo.load(file_path)
-      puts complete_list
-      puts "Hello"
+    file_path = "./data/event_attendees_test.csv" if !file_path
+    
+    @complete_list = AttendeeRepo.load(file_path)
+    puts complete_list
+    puts "Hello"
   end
 
   def queue_save_by(filename)
     CSV.open(create_filename(filename), 'w') do |csv|
-    csv << ['ID', 'RegDate', 'First Name', 'Last Name', 'Email Address', 'Home Phone', 'Street', 'City', 'State', 'Zip Code']
-    @search_results.each do |a|
-      csv << a.to_row
+      csv << ['ID', 'RegDate', 'First Name', 'Last Name', 'Email Address', 'Home Phone', 'Street', 'City', 'State', 'Zip Code']
+      @search_results.each do |a|
+        csv << a.to_row
       end
     end
   end
