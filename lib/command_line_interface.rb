@@ -51,12 +51,12 @@ class CommandLineInterface
 	def queue(sub_command)
 		case sub_command[0]	
 		when "count"
-			MessagePrinter.queue_results_message_count(user_command.search_results.attendees.count)
+			MessagePrinter.queue_results_message_count(user_command.queue.count)
 		when "clear"
 			search_results.clear
 			MessagePrinter.clear_queue_successful_message
 		when "print"
-			user_command.search_results.print
+			user_command.queue.print
 		when "save"
 			search_results.save
 		end

@@ -20,9 +20,8 @@ class Queue
     if @attendees.empty?
       puts MessagePrinter.print_error_message
     else
-      flat_att = attendees.flatten
-      rows = []; binding.pry
-      flat_att.each do |a|
+      rows = []
+      @attendees.each do |a|
         rows << [
           "#{a.id}",
           "#{a.regdate}",

@@ -13,7 +13,7 @@ class UserCommand
 
   def find(kind, query)
     puts "#{kind} #{query}"
-    queue.attendees = Search.new(complete_list).send(kind.to_sym, query)
+    queue.attendees << Search.new(complete_list).send(kind.to_sym, query)
   end
 
   def help(sub_command)
