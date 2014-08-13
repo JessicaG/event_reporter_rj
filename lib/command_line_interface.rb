@@ -29,7 +29,7 @@ class CommandLineInterface
 
 	def process_commands(command, parameters)
 		case command
-		when "help"  then user_command.help(parameters)
+		when "help"  then help(parameters)
 		when "load"  then user_command.load(parameters)
 		when "queue" then queue(parameters)
 		when "find"  then	user_command.find(parameters[0], parameters[-1])
@@ -39,22 +39,34 @@ class CommandLineInterface
 		end
 	end
 
+  def help(sub_command)
+      case sub_command[0]
+      when nil then MessagePrinter.help_options
+      when 'find'  then MessagePrinter.help_find
+      when 'queue' then queue_help(sub_command)
+    end
+  end
+
+
+
 	def queue_help(sub_command)
 		case sub_command[1]
-		when 'count' then MessagePrinter.help_queue_count_message
-		when 'clear' then MessagePrinter.help_queue_clear_message
-		when 'print' then MessagePrinter.help_queue_print_message
-		when 'save'  then MessagePrinter.help_queue_save_to_message
+		when 'count' then MessagePrinter.help_queue_count
+		when 'clear' then MessagePrinter.help_queue_clear
+		when 'print' then MessagePrinter.help_queue_print
+		when 'save'  then MessagePrinter.help_queue_save_to
 		end
 	end
+
+
 
 	def queue(sub_command)
 		case sub_command[0]	
 		when "count"
 			MessagePrinter.queue_results_message_count(user_command.queue.count)
 		when "clear"
-			search_results.clear
-			MessagePrinter.clear_queue_successful_message
+			user_command.queue.clear
+			MessagePrinter.clear_queue_successful
 		when "print"
 			user_command.queue.print
 		when "save"

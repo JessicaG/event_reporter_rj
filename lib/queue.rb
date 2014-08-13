@@ -13,15 +13,16 @@ class Queue
   end
 
   def count
-    attendees.count
+    attendees.flatten.count
   end
 
   def print
     if @attendees.empty?
       puts MessagePrinter.print_error_message
     else
+      attendee_array = attendees.flatten
       rows = []
-      @attendees.each do |a|
+      attendee_array.each do |a|
         rows << [
           "#{a.id}",
           "#{a.regdate}",

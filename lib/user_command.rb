@@ -16,15 +16,6 @@ class UserCommand
     queue.attendees << Search.new(complete_list).send(kind.to_sym, query)
   end
 
-  def help(sub_command)
-    if sub_command.length < 1 then messages.help_options_message
-      case sub_command[0]
-      when 'find'  then messages.help_find_message
-      when 'queue' then queue_help(sub_command)
-      end
-    end
-  end
-
   def load(file_path)
     file_path = "./data/event_attendees_test.csv" if file_path.nil?
     
