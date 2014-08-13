@@ -23,7 +23,7 @@ module MessagePrinter
   end
 
   def self.queue_results_message_count(queue)
-    puts "There are #{queue.count} records that match your criteria".colorize(:blue)
+    puts "There are #{queue} records that match your criteria".colorize(:blue)
   end
 
   def self.invalid_command_message

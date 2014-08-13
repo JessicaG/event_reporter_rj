@@ -16,9 +16,10 @@ class Queue
   end
 
   def print
-    table = Terminal::Table.new :rows => rows
-
-    attendees
+    
+    # rows = attendees.collect {|attendee| puts attendee.inspect; attendee.to_row }
+    attendees 
+    # table = Terminal::Table.new :rows => rows
   end
 
   def count

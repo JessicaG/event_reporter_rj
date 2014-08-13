@@ -12,7 +12,8 @@ class QueueTest < Minitest::Test
 	end
 
 	def test_it_can_print
-		# It can print the queue to the terminal
+		
+		# assert TerminalTable.new()
 	end
 
 	def test_it_can_save_to_csv

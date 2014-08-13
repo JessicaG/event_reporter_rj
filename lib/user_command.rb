@@ -51,7 +51,7 @@ class UserCommand
       search_results.clear
       MessagePrinter.clear_queue_successful_message
     when "print"
-      search_results.print
+      puts search_results.print
     when "save"
       search_results.save
     end
@@ -60,19 +60,8 @@ class UserCommand
   def queue_save_by(filename)
     CSV.open(create_filename(filename), 'w') do |csv|
     csv << ['ID', 'RegDate', 'First Name', 'Last Name', 'Email Address', 'Home Phone', 'Street', 'City', 'State', 'Zip Code']
-    @queue.each do |a|
-      csv << [
-        "#{a.id}",
-        "#{a.regdate}",
-        "#{a.first_name}",
-        "#{a.last_name}",
-        "#{a.email_address}",
-        "#{a.homephone}",
-        "#{a.street}",
-        "#{a.city}",
-        "#{a.state}",
-        "#{a.zipcode}"
-        ]
+    @search_results.each do |a|
+      csv << a.to_row
       end
     end
   end
