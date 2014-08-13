@@ -47,8 +47,6 @@ class CommandLineInterface
     end
   end
 
-
-
 	def queue_help(sub_command)
 		case sub_command[1]
 		when 'count' then MessagePrinter.help_queue_count
@@ -58,8 +56,6 @@ class CommandLineInterface
 		end
 	end
 
-
-
 	def queue(sub_command)
 		case sub_command[0]	
 		when "count"
@@ -68,7 +64,10 @@ class CommandLineInterface
 			user_command.queue.clear
 			MessagePrinter.clear_queue_successful
 		when "print"
-			user_command.queue.print
+      case sub_command[1]
+        when "by" then user_command.queue.print_by(sub_command[2])
+      end
+		  user_command.queue.print
 		when "save"
 			search_results.save
 		end
