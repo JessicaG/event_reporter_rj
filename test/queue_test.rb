@@ -31,9 +31,5 @@ class QueueTest < Minitest::Test
   	assert_equal "Allison", queue.attendees.first[1]
   end
 
-  def test_it_can_clear_a_queue
-   queue.attendees <<  person
-	 assert_equal [], queue.clear
-  end
 
 end
