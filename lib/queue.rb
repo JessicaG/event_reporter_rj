@@ -1,21 +1,30 @@
 require 'terminal-table'
+require_relative 'message_printer'
 
 class Queue
+  include MessagePrinter
   attr_accessor :attendees
 
   def initialize
     @attendees = []
   end
 
-  ###
   def add_to_attendees(results)
+    if queue_attendees_each_find?
     results.each do |attendee|
       attendees << attendee
     end
+    else
+      clear_queue
+      add_to_attendees(results)
+    end
   end
 
-  ###
-  def clear
+  def queue_attendees_each_find?
+    attendees.empty?
+  end
+
+  def clear_queue
     attendees.clear
   end
 
@@ -27,7 +36,6 @@ class Queue
     if @attendees.empty?
       puts MessagePrinter.print_error_message
     else
-      # attendee_array = attendees.flatten
       rows = attendees.collect do |a|
          [
           "#{a.id}",
@@ -72,6 +80,8 @@ class Queue
         ]
       end
     end
+    puts MessagePrinter.save_queue_to_csv_successful
+    clear_queue
   end
 
   private

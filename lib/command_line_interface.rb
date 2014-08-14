@@ -7,7 +7,7 @@ class CommandLineInterface
 	attr_reader	:user_command,
 							:search,
 							:parameters,
-							:queue         
+							:queue
 
 	def initialize
 		@user_command = UserCommand.new
@@ -61,7 +61,7 @@ class CommandLineInterface
 		when "count"
 			MessagePrinter.queue_results_message_count(user_command.queue.count)
 		when "clear"
-			user_command.queue.clear
+			user_command.queue.clear_queue
 			MessagePrinter.clear_queue_successful
 		when "print"
       case sub_command[1]

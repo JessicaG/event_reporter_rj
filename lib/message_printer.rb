@@ -11,19 +11,23 @@ module MessagePrinter
     file = File.open("./assets/welcome.txt", "r")
     contents = file.read
     print contents
-    puts "Welcome to Event Reporter, the easiest way to look at your CSV file!\nStart by (load)ing your file, go to (help) or (quit) to leave.".colorize(:magenta)
+    puts "Welcome to Event Reporter, the easiest way to look at your CSV file!\nStart by (load)ing your file, go to (help) or (quit) to leave.".colorize(:blue)
   end
 
   def self.outro
-    puts "Thanks for using Event Reporter! Be sure to check back with us when you need to work with a CSV.".colorize(:magenta)
+    puts "Thanks for using Event Reporter! Be sure to check back with us when you need to work with a CSV.".colorize(:blue)
   end
 
-  def self.records_loaded(records)
-    puts "You have loaded #{records.count} records.".colorize(:yellow)
+  def self.records_loaded
+    puts "You have loaded records successfully.".colorize(:yellow)
   end
 
   def self.queue_results_message_count(queue)
-    puts "There are #{queue} records that match your criteria".colorize(:blue)
+    puts "There are #{queue} records that match your criteria".colorize(:yellow)
+  end
+
+  def self.find_results_message_count(queue)
+    puts "There are #{queue.count} records that match your criteria".colorize(:yellow)
   end
 
   def self.invalid_command
@@ -35,7 +39,7 @@ module MessagePrinter
   end
 
   def self.print_error_message
-    puts "Sorry, your queue is empty.  Try (find by)"
+    puts "Sorry, your queue is empty. Try (find by)"
   end
 
   def self.save_queue_to_csv_successful
