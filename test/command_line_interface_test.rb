@@ -1,35 +1,39 @@
 require_relative 'test_helper'
 
 class CommandLineInterfaceTest < MiniTest::Test
+  attr_reader :cli
+
+  def setup
+    @cli = CommandLineInterface.new
+  end
+
+  def test_it_exists
+    assert CommandLineInterface
+  end
+
+  def test_if_it_has_MessagePrinter_module
+    assert MessagePrinter
+  end
+
+  def test_it_has_an_instance_of_UserCommand
+    assert cli.user_command
+  end
+
+  def test_it_has_a_process_commands_method
+    assert cli.respond_to?(:process_commands)
+  end
+
+  def test_it_has_a_process_run
+    assert cli.respond_to?(:run)
+  end
+
+  def test_it_has_a_queue_method
+    assert cli.respond_to?(:queue)
+  end
+
 
   def test_it_creates_a_user_command_instance
-    cli = CommandLineInterface.new
     assert_instance_of UserCommand, cli.user_command
   end
-
-  def test_help_gets_called
-    cli = CommandLineInterface.new
-    # assert_send([cli, :help, "find"])    
-    cli.process_commands("help", "find")    
-  end
-
-  def test_it_can_call_on_help_command
-    skip
-  end
-
-
-
-  def test_it_can_count_records_in_queue
-    skip
-  end
-
-  def test_it_can_print_queue
-    skip
-  end
-
-  def test_it_can_save_to_csv
-    skip
-  end
-
 
 end

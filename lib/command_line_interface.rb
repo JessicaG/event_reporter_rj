@@ -29,7 +29,6 @@ class CommandLineInterface
 	end
 
 	def process_commands(command, parameters)
-		binding.pry
 		case command
 		when "help"  then help(parameters)
 		when "load"  then user_command.load(parameters)
