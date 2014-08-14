@@ -7,6 +7,10 @@ class CommandLineInterfaceTest < MiniTest::Test
     @cli = CommandLineInterface.new
   end
 
+  def test_it_creates_a_user_command_instance
+    assert_instance_of UserCommand, cli.user_command
+  end
+
   def test_it_exists
     assert CommandLineInterface
   end
@@ -23,17 +27,11 @@ class CommandLineInterfaceTest < MiniTest::Test
     assert cli.respond_to?(:process_commands)
   end
 
-  def test_it_has_a_process_run
+  def test_it_has_a_method_run
     assert cli.respond_to?(:run)
   end
 
   def test_it_has_a_queue_method
     assert cli.respond_to?(:queue)
   end
-
-
-  def test_it_creates_a_user_command_instance
-    assert_instance_of UserCommand, cli.user_command
-  end
-
 end

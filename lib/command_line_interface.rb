@@ -1,6 +1,5 @@
 require 'colorize'                 # => true
 require_relative 'message_printer'
-require 'pry'
 
 class CommandLineInterface
 	include MessagePrinter

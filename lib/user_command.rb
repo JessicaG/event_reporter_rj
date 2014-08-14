@@ -17,7 +17,6 @@ class UserCommand
 
   def load(file_path)
     file_path = "./data/event_attendees.csv" if file_path.nil?
-
     @complete_list = AttendeeRepo.load(file_path)
   end
 
