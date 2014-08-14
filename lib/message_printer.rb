@@ -57,7 +57,7 @@ module MessagePrinter
           (queue print by <attribute>) displays your queue sorted by the specified attribute like zipcode,\n
           (queue save to <example_filename>) to save your current queue to a csv with a specified filename,\n
           (queue clear) remove all the records in your current queue,\n
-          (quit) to leave the program completely.\n"
+          (quit) to leave the program completely."
   end
 
   def self.help_find
@@ -73,7 +73,9 @@ module MessagePrinter
   end
 
   def self.help_queue_print_by
-    puts "To print by a certain attribute, you must mimic your attribute to how\n it is specified in your find command and in your header file ie last_name or zipcode"
+    puts "To print by a certain attribute, you must mimic your attribute to how\n
+    it is specified in your find command and in your header file ie last_name or zipcode"
+  end
 
   def self.help_queue_save_to
     puts "Output is saved as a CSV file to your output folder under the name specified after save to"
@@ -83,5 +85,4 @@ module MessagePrinter
     puts "This will clear your current queue"
   end
 
-end
 end
