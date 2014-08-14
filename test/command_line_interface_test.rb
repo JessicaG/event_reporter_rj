@@ -6,6 +6,13 @@ class CommandLineInterfaceTest < MiniTest::Test
   def setup
     @cli = CommandLineInterface.new
   end
+  
+  def test_help_calls_help_find
+    cli = CommandLineInterface.new
+    one = capture_io {MessagePrinter.help_find}
+    two = capture_io {cli.help(['find'])}
+    assert_equal one, two
+  end  
 
   def test_it_creates_a_user_command_instance
     assert_instance_of UserCommand, cli.user_command
