@@ -8,13 +8,12 @@ class SearchTest < MiniTest::Test
 
   def setup
     @attendees = AttendeeRepo.load
-    @search = Search.new(attendees)    
+    @search = Search.new(attendees)
   end
 
   def test_it_exists
     assert Search
   end
-
 
   def test_it_can_find_by_first_name
     results = search.first_name("Allison")
@@ -43,5 +42,5 @@ class SearchTest < MiniTest::Test
     results = search.zipcode("20010")
 
     assert_equal '20010', results.first.zipcode
-  end  
+  end
 end

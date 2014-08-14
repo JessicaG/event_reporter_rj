@@ -7,7 +7,6 @@ class CommandLineInterfaceTest < MiniTest::Test
     @cli = CommandLineInterface.new
   end
 
-
   def test_help_calls_help_find
     cli = CommandLineInterface.new
 
@@ -17,7 +16,7 @@ class CommandLineInterfaceTest < MiniTest::Test
      assert_equal one, two
    end
   end
-  
+
   def test_it_creates_a_user_command_instance
     assert_instance_of UserCommand, cli.user_command
   end

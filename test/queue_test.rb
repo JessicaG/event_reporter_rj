@@ -5,7 +5,7 @@ class QueueTest < Minitest::Test
   attr_reader :queue, :person
 
   def setup
-        @queue = Queue.new
+    @queue = Queue.new
 
    @person = {
      first_name:"Allison",
@@ -25,7 +25,6 @@ class QueueTest < Minitest::Test
   def test_user_command_initializes_an_empty_array
    assert_equal [], queue.attendees
   end
-
 
   def test_it_adds_to_attendees
   	queue.add_to_attendees(person)
