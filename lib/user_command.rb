@@ -11,7 +11,6 @@ class UserCommand
   end
 
   def find(kind, query)
-    puts "#{kind} #{query}"
     results = Search.new(complete_list).send(kind.to_sym, query)
     queue.add_to_attendees(results)
   end
